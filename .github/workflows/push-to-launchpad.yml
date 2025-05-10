@@ -58,13 +58,13 @@ jobs:
       # to its original place, but we don't move the ".github" folder
       # as "debuild" will report that there are unexpected upstream
       # changes.
-      - name: Make original package
-        run: |
-          mv debian ..
-          mv .github ..
-          tar cfv ../foobar_x.x.orig.tar .
-          xz -9 ../foobar_x.x.orig.tar
-          mv ../debian .
+      # - name: Make original package
+      #  run: |
+      #    mv debian ..
+      #    mv .github ..
+      #    tar cfv ../aws-gate_x.x.orig.tar .
+      #    xz -9 ../foobar_x.x.orig.tar
+      #    mv ../debian .
       
       # This builds a source package. This is required. Don't worry;
       # everything is logged.
