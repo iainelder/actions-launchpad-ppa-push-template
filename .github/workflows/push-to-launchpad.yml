@@ -42,10 +42,10 @@ jobs:
       # so it can be built offline (sbuild), add it. Note that it's
       # only required for software that requires downloading and
       # installing library dependencies (msbuild for example).
-      #- name: Run initialization script
-      #  run: |
-      #    chmod +x initialize.sh
-      #    ./initialize.sh
+      - name: Run initialization script
+        run: |
+          chmod +x initialize.sh
+          ./initialize.sh
       
       # This makes a package that contains full source code, including
       # pre-downloaded stuff by the initialization script. Replace
