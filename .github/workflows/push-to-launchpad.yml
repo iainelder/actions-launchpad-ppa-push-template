@@ -36,7 +36,7 @@ jobs:
       # dependencies. Make sure that at least these three packages,
       # devscripts, debhelper-compat, and dput, get installed.
       - name: Install packages
-        run: sudo apt install devscripts debhelper-compat dput
+        run: sudo apt install devscripts debhelper-compat dput debhelper
         
       # If there is a script that can initialize the source package
       # so it can be built offline (sbuild), add it. Note that it's
