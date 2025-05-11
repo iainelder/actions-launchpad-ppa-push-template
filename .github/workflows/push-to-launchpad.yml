@@ -9,6 +9,9 @@ on:
   # it runs on each release.
   workflow_dispatch:
 
+  # Run on every push for easier development.
+  push:
+
 jobs:
   build:
     # It has to run on Ubuntu to ensure that we've pushed it to the PPA
@@ -22,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       #  with:
       #    submodules: 'true'
-      
+
       # Launchpad won't accept unsigned packages, so you have to place
       # your GPG private key and passphrase, if appropriate. Add such
       # things to your Secrets.
@@ -37,7 +40,7 @@ jobs:
       # devscripts, debhelper-compat, and dput, get installed.
       - name: Install packages
         run: sudo apt install devscripts debhelper-compat dput dh-make
-        
+
       # If there is a script that can initialize the source package
       # so it can be built offline (sbuild), add it. Note that it's
       # only required for software that requires downloading and
@@ -46,7 +49,7 @@ jobs:
         run: |
           chmod +x initialize.sh
           ./initialize.sh
-      
+
       # This makes a package that contains full source code, including
       # pre-downloaded stuff by the initialization script. Replace
       # foobar with the package name and x,x with the package version,
@@ -65,7 +68,7 @@ jobs:
       #    tar cfv ../aws-gate_x.x.orig.tar .
       #    xz -9 ../foobar_x.x.orig.tar
       #    mv ../debian .
-      
+
       # This builds a source package. This is required. Don't worry;
       # everything is logged.
       # Despite setting DEBFULLNAME and the email in dh_make,
@@ -78,7 +81,7 @@ jobs:
       # gpg --export --armor 0194E029AD29E57764379B921A60B9A721EB268B
       - name: Build source package
         run: GPG_TTY="$(tty)" debuild -S -sa -kiain@isme.es
-        
+
       # The last thing we need to do is to push the package to Launchpad.
       # Replace john with your Launchpad username, foobar with your
       # package name, and the x.x with the full version (including e.g.
