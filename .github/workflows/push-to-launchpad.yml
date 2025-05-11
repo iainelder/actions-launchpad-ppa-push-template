@@ -68,8 +68,12 @@ jobs:
       
       # This builds a source package. This is required. Don't worry;
       # everything is logged.
+      # Despite setting DEBFULLNAME and the email in dh_make,
+      # I need to set the key ID with -k or debuild fails to sign.
+      # `gpg: skipped "Iain Elder <iain@isme.es>": No secret key`
+      # `gpg: /tmp/debsign.HjrjNdCQ/aws-gate_0.11.3-1.dsc: clear-sign failed: No secret key`
       - name: Build source package
-        run: debuild -S -sa
+        run: debuild -S -sa -kiain@isme.es
         
       # The last thing we need to do is to push the package to Launchpad.
       # Replace john with your Launchpad username, foobar with your
