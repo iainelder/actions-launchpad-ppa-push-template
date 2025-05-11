@@ -72,8 +72,11 @@ jobs:
       # I need to set the key ID with -k or debuild fails to sign.
       # `gpg: skipped "Iain Elder <iain@isme.es>": No secret key`
       # `gpg: /tmp/debsign.HjrjNdCQ/aws-gate_0.11.3-1.dsc: clear-sign failed: No secret key`
+      #
+      # For some reason in GitHub I have 2 keys with the same email address.
+      # Set the exact key ID of the 1 that I also have in Launchpad.
       - name: Build source package
-        run: debuild -S -sa -kiain@isme.es
+        run: debuild -S -sa -k0194E029AD29E57764379B921A60B9A721EB268B
         
       # The last thing we need to do is to push the package to Launchpad.
       # Replace john with your Launchpad username, foobar with your
