@@ -75,8 +75,11 @@ jobs:
       #
       # For some reason in GitHub I have 2 keys with the same email address.
       # Set the exact key ID of the 1 that I also have in Launchpad.
+      #
+      # Setting the exact key ID generates "Inappropriate ioctl for device" error,
+      # so set the tty to work around it. https://github.com/keybase/keybase-issues/issues/2798
       - name: Build source package
-        run: debuild -S -sa -k0194E029AD29E57764379B921A60B9A721EB268B
+        run: GPG_TTY="$(tty)" debuild -S -sa -k0194E029AD29E57764379B921A60B9A721EB268B
         
       # The last thing we need to do is to push the package to Launchpad.
       # Replace john with your Launchpad username, foobar with your
