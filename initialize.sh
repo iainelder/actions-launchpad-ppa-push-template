@@ -2,6 +2,9 @@
 
 set +euxo pipefail
 
+## Debugging.
+gpg --list-secret-keys
+
 # Clone into current dir. The current dir is already non-empty
 # so I have to work around git's refusal.
 git clone https://github.com/xen0l/aws-gate
