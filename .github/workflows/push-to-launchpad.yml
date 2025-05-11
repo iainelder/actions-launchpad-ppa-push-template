@@ -82,4 +82,4 @@ jobs:
       # be dynamic, use wildcards, but be sure that you put it before
       # ".changes" (e,g, foobar_*_source.changes)
       - name: Push to Launchpad
-        run: dput ppa:isme-es/test-ppa ../aws-gate_0.11.3-1_source.changes
+        run: dput --debug ppa:isme-es/test-ppa ../aws-gate_0.11.3-1_source.changes
