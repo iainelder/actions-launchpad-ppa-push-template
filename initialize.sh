@@ -12,7 +12,7 @@ mv aws-gate/* aws-gate/.* .
 rm -rf aws-gate/
 
 # Make a debian metadata folder.
-dh_make --python --createorig --packagename aws-gate_0.11.3 --yes
+dh_make --python --createorig --packagename aws-gate_0.11.3 --email iain@isme.es --yes
 
 # Set the distribution so that debuild signs the changes file.
 # At best dput will fail loudly. At worst it appears to work but Launchpad never gives email feedback.
