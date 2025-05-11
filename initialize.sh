@@ -20,5 +20,9 @@ DEBFULLNAME="Iain Elder" dh_make --python --createorig --packagename aws-gate_0.
 # https://help.launchpad.net/Packaging/UploadErrors
 sed -i 's/UNRELEASED/noble/' debian/changelog
 
+# The awscli package is in the admin section, so probably all AWS packages should go there.
+# https://www.debian.org/doc/debian-policy/ch-archive.html#sections
+sed -i 's/Section: unknown/Section: admin/' debian/control
+
 # Install the build dependencies.
 sudo apt install build-essential:native dh-sequence-python3 python3-all
