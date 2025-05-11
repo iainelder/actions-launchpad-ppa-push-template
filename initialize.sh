@@ -13,7 +13,7 @@ rm -rf aws-gate/
 
 # Make a debian metadata folder.
 # The email and full name need to match the GPG key in the repo secret.
-DEBFULLNAME="Iain Elder" dh_make --python --createorig --packagename aws-gate_0.11.3 --email iain@isme.es --yes
+DEBFULLNAME="Iain Elder" dh_make --packageclass indep --createorig --packagename aws-gate_0.11.3 --email iain@isme.es --yes
 
 # Set the distribution so that debuild signs the changes file.
 # At best dput will fail loudly. At worst it appears to work but Launchpad never gives email feedback.
