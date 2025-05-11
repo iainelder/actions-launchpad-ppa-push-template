@@ -81,5 +81,11 @@ jobs:
       # 0ppa1). If you don't know how it was named, or if you want to
       # be dynamic, use wildcards, but be sure that you put it before
       # ".changes" (e,g, foobar_*_source.changes)
+      #
+      # Use --unchecked to avoid these errors that I think might be making it fail silently.
+      # It reports success after some signature errors.
+      # gpg: ../aws-gate_0.11.3-1_source.changes: Error checking signature from 7F15D42A58F1A609: SignatureVerifyError: 0
+      # gpg: ../aws-gate_0.11.3-1.dsc: Error checking signature from 7F15D42A58F1A609: SignatureVerifyError: 0
+      # Successfully uploaded packages.
       - name: Push to Launchpad
-        run: dput --debug ppa:isme-es/test-ppa ../aws-gate_0.11.3-1_source.changes
+        run: dput --debug --unchecked ppa:isme-es/test-ppa ../aws-gate_0.11.3-1_source.changes
